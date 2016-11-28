@@ -136,12 +136,12 @@ else
   
   echo "Moving buildpack .apt files"
 
-  mv $VENDOR_DIR/.apt /app
+  #mv $VENDOR_DIR/.apt /app
 
 fi
 
 # move the R binaries to /app/vendor/R
-mv -v $VENDOR_DIR/R /app/vendor
+#mv -v $VENDOR_DIR/R /app/vendor
 
 # trialed and errored on this; copy over libs to gfortran, so
 # that liblto_plugin.so and others can be found
