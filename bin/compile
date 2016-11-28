@@ -93,11 +93,11 @@ then
   curl $R_BINARIES -s -o - | tar xzf - -C /app
   
   echo "--------ls /app"
-  echo ls /app
+   ls /app
   echo "--------ls /app/vendor"
-  echo ls /app/vendor
+   ls /app/vendor
   echo "--------ls /app/vendor/R"
-  echo ls /app/vendor/R
+   ls /app/vendor/R
 
 else
 
@@ -155,7 +155,7 @@ fi
 # trialed and errored on this; copy over libs to gfortran, so
 # that liblto_plugin.so and others can be found
 # (tried using LDFLAGS, LD_LIBRARY_PATH and LIBRARY_PATH but didn't work)
-cp -r -v /usr/lib/gcc/$ARCH/$GCC_VERSION/* /app/.apt/usr/lib/gcc/$ARCH/$GCC_VERSION
+cp -r  /usr/lib/gcc/$ARCH/$GCC_VERSION/* /app/.apt/usr/lib/gcc/$ARCH/$GCC_VERSION
 
 # fix up package config files ~ point them to /app/.apt/usr/... instead of /usr/...
 for pcfile in /app/.apt/usr/lib/pkgconfig/*.pc
