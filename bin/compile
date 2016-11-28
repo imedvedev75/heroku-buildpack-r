@@ -96,8 +96,8 @@ then
    ls /app
   echo "--------ls /app/vendor"
    ls /app/vendor
-  echo "--------ls /app/vendor/R"
-   ls /app/vendor/R
+  echo "--------ls /app/vendor/R/bin"
+   ls /app/vendor/R/bin
 
 else
 
