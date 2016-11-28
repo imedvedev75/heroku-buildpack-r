@@ -137,6 +137,8 @@ else
   echo "Moving buildpack .apt files"
 
   #mv $VENDOR_DIR/.apt /app
+  
+  mv /app/vendor/.apt /app
 
 fi
 
