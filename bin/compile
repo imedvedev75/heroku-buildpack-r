@@ -91,6 +91,13 @@ then
   echo "Downloading and unpacking R binaries ($R_BINARIES)" | indent
   #curl $R_BINARIES -s -o - | tar xzf - -C $BUILD_DIR
   curl $R_BINARIES -s -o - | tar xzf - -C /app
+  
+  echo "--------ls /app"
+  echo ls /app
+  echo "--------ls /app/vendor"
+  echo ls /app/vendor
+  echo "--------ls /app/vendor/R"
+  echo ls /app/vendor/R
 
 else
 
