@@ -74,6 +74,7 @@ R_BINARIES="https://${S3_BUCKET}.s3.amazonaws.com/${STACK}/R-${R_VERSION}-binari
 echo "Vendoring R $R_VERSION for $STACK stack ($BUILD_PACK_VERSION)" | indent
 
 echo "BUILD_DIR = $BUILD_DIR"
+echo "CACHE_DIR = $CACHE_DIR"
 
 # Check if we can pull from cache rather than downloading
 if [[ -f "$CACHE_DIR/.r-version" ]] &&
@@ -83,8 +84,12 @@ if [[ -f "$CACHE_DIR/.r-version" ]] &&
 then
 
   # copy from cache to the build directory
-  echo "Retrieving R binaries and packages from cache" | indent
-  cp -r $CACHE_DIR/vendor $BUILD_DIR
+  #echo "Retrieving R binaries and packages from cache" | indent
+  #cp -r $CACHE_DIR/vendor $BUILD_DIR
+  
+  # download and unpack binaries
+  echo "Downloading and unpacking R binaries ($R_BINARIES)" | indent
+  curl $R_BINARIES -s -o - | tar xzfv - -C $BUILD_DIR
 
 else
 
