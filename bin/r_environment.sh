@@ -5,6 +5,7 @@ GCC_VERSION=4.8
 
 # $HOME is /app
 
+export R_HOME=$HOME/vendor/R
 export PATH="$HOME/vendor/R/bin:$HOME/.apt/usr/bin:$HOME/.apt/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
 export LIBRARY_PATH="$HOME/.apt/usr/lib/$ARCH:$HOME/.apt/usr/lib:/usr/lib/$ARCH:/usr/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOME/.apt/usr/lib:$HOME/.apt/usr/lib/$ARCH/:$HOME/.apt/usr/lib/gcc/$ARCH/$GCC_VERSION:/usr/lib/gcc/$ARCH/$GCC_VERSION:$HOME/.apt/usr/lib/libblas:$HOME/.apt/usr/lib/lapack:$LD_LIBRARY_PATH"
