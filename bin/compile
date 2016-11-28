@@ -68,10 +68,12 @@ else
 fi
 
 S3_BUCKET="heroku-buildpack-r"
-R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/${STACK}/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
+R_BINARIES="https://${S3_BUCKET}.s3.amazonaws.com/${STACK}/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
 
 # vendor R into the slug
 echo "Vendoring R $R_VERSION for $STACK stack ($BUILD_PACK_VERSION)" | indent
+
+echo "BUILD_DIR = $BUILD_DIR"
 
 # Check if we can pull from cache rather than downloading
 if [[ -f "$CACHE_DIR/.r-version" ]] &&
@@ -88,7 +90,7 @@ else
 
   # download and unpack binaries
   echo "Downloading and unpacking R binaries ($R_BINARIES)" | indent
-  curl $R_BINARIES -s -o - | tar xzf - -C $BUILD_DIR
+  curl $R_BINARIES -s -o - | tar xzfv - -C $BUILD_DIR
 
 fi
 
@@ -124,17 +126,20 @@ else
 
   # move the binary dependances to /app/.apt
   # so that R can find them when compiling packages
+  
+  echo "Moving buildpack .apt files"
+
   mv $VENDOR_DIR/.apt /app
 
 fi
 
 # move the R binaries to /app/vendor/R
-mv $VENDOR_DIR/R /app/vendor
+mv -v $VENDOR_DIR/R /app/vendor
 
 # trialed and errored on this; copy over libs to gfortran, so
 # that liblto_plugin.so and others can be found
 # (tried using LDFLAGS, LD_LIBRARY_PATH and LIBRARY_PATH but didn't work)
-cp -r /usr/lib/gcc/$ARCH/$GCC_VERSION/* /app/.apt/usr/lib/gcc/$ARCH/$GCC_VERSION
+cp -r -v /usr/lib/gcc/$ARCH/$GCC_VERSION/* /app/.apt/usr/lib/gcc/$ARCH/$GCC_VERSION
 
 # fix up package config files ~ point them to /app/.apt/usr/... instead of /usr/...
 for pcfile in /app/.apt/usr/lib/pkgconfig/*.pc
