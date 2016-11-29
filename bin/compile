@@ -92,19 +92,19 @@ then
   #curl $R_BINARIES -s -o - | tar xzf - -C $BUILD_DIR
   curl $R_BINARIES -s -o - | tar xzf - -C /app
   
-  echo "--------ls /app"
-   ls /app
-  echo "--------ls /app/vendor"
-   ls /app/vendor
-  echo "--------ls /app/vendor/R/bin"
-   ls /app/vendor/R/bin
+  #echo "--------ls /app"
+  # ls /app
+  #echo "--------ls /app/vendor"
+  # ls /app/vendor
+  #echo "--------ls /app/vendor/R/bin"
+  # ls /app/vendor/R/bin
 
 else
 
   # download and unpack binaries
   echo "Downloading and unpacking R binaries ($R_BINARIES)" | indent
-  #curl $R_BINARIES -s -o - | tar xzf - -C $BUILD_DIR
-  curl $R_BINARIES -s -o - | tar xzf - -C /app
+  curl $R_BINARIES -s -o - | tar xzf - -C $BUILD_DIR
+  #curl $R_BINARIES -s -o - | tar xzf - -C /app
 
 fi
 
@@ -144,13 +144,14 @@ else
   echo "Moving buildpack .apt files"
 
   #mv $VENDOR_DIR/.apt /app
-  
-  mv /app/vendor/.apt /app
+  #mv /app/vendor/.apt /app
+  cp -r $VENDOR_DIR/.apt /app
 
 fi
 
 # move the R binaries to /app/vendor/R
 #mv -v $VENDOR_DIR/R /app/vendor
+cp -r $VENDOR_DIR/R /app/vendor/R
 
 # trialed and errored on this; copy over libs to gfortran, so
 # that liblto_plugin.so and others can be found
