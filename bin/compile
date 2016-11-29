@@ -260,7 +260,7 @@ cp "$LP_DIR/bin/r_environment.sh" "$BUILD_DIR/.profile.d/r_environment.sh"
 # now copy everything back to the BUILD_DIR
 # which will be used to make the slug
 cp -r /app/.apt $BUILD_DIR
-cp -r /app/vendor/R $VENDOR_DIR/R
+cp -r /app/vendor/R $VENDOR_DIR
 
 #
 # layout of $BUILD_DIR now
