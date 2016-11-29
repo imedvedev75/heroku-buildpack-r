@@ -153,7 +153,7 @@ fi
 #mv -v $VENDOR_DIR/R /app/vendor
 ls $VENDOR_DIR/R
 mkdir -p /app/vendor/R
-cp -r $VENDOR_DIR/R /app/vendor/R
+cp -r $VENDOR_DIR/R /app/vendor
 echo Vendor dir:
 ls /app/vendor
 echo R dir:
