@@ -151,6 +151,7 @@ fi
 
 # move the R binaries to /app/vendor/R
 #mv -v $VENDOR_DIR/R /app/vendor
+ls $VENDOR_DIR/R
 mkdir -p /app/vendor/R
 cp -r $VENDOR_DIR/R /app/vendor/R
 
