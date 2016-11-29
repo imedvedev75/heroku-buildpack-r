@@ -154,6 +154,11 @@ fi
 ls $VENDOR_DIR/R
 mkdir -p /app/vendor/R
 cp -r $VENDOR_DIR/R /app/vendor/R
+echo Vendor dir:
+ls $VENDOR_DIR
+echo R dir:
+ls $VENDOR_DIR/R
+
 
 # trialed and errored on this; copy over libs to gfortran, so
 # that liblto_plugin.so and others can be found
